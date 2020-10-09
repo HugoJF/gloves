@@ -92,6 +92,10 @@ public void OnConfigsExecuted()
 
 public Action CommandGlove(int client, int args)
 {
+	if (!CheckCommandAccess(client, "Gloves", ADMFLAG_RESERVATION)) {
+		PrintToChat(client, "\x01[GLOVES] \x02Você precisa ser VIP para mudar as luvas! \x01Accesse \x04https://vip.denerdtv.com");
+		return Plugin_Handled;
+	}
 	if (IsValidClient(client))
 	{
 		CreateMainMenu(client).Display(client, MENU_TIME_FOREVER);
@@ -101,6 +105,10 @@ public Action CommandGlove(int client, int args)
 
 public Action CommandGloveLang(int client, int args)
 {
+	if (!CheckCommandAccess(client, "Gloves", ADMFLAG_RESERVATION)) {
+		PrintToChat(client, "\x01[GLOVES] \x02Você precisa ser VIP para mudar as luvas! ");
+		return Plugin_Handled;
+	}
 	if (IsValidClient(client))
 	{
 		CreateLanguageMenu(client).Display(client, MENU_TIME_FOREVER);
@@ -137,6 +145,9 @@ public void ConVarCallBack(QueryCookie cookie, int client, ConVarQueryResult res
 
 public void GivePlayerGloves(int client)
 {
+	if (!CheckCommandAccess(client, "Gloves", ADMFLAG_RESERVATION)) {
+		return;
+	}
 	int playerTeam = GetClientTeam(client);
 	if(g_iGloves[client][playerTeam] != 0)
 	{
