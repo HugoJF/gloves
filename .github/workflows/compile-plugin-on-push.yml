@@ -31,6 +31,8 @@ jobs:
       run: |
         mkdir artifact
         mv plugins artifact
+        mv configs artifact
+        mv translations artifact
         mv scripting artifact
         mv LICENSE artifact
 

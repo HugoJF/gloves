@@ -56,9 +56,11 @@ jobs:
     - name: Prepare files for artifact
       run: |
         mkdir artifact
-        mv ./plugins ./artifact/
-        mv ./scripting ./artifact/
-        mv ./LICENSE ./artifact/
+        mv plugins artifact
+        mv configs artifact
+        mv translations artifact
+        mv scripting artifact
+        mv LICENSE artifact
 
     - name: Zip plugin
       run : |
